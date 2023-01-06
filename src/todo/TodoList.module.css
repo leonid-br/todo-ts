@@ -1,0 +1,89 @@
+.todoList {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: #424242;
+    text-align: left;
+}
+
+.firstTodo {
+    padding: 10px 20px;
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.todoCompl p {
+    color: #767472;
+    text-decoration: line-through;
+}
+
+.todo:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+.name {
+    color: #ff9a00;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.btnBox {
+    margin-left: auto;
+}
+
+.btnBox button {
+    border-radius: 25px;
+    padding: 5px 20px;
+    margin-left: 10px;
+}
+
+.btnCompl {
+    color: green;
+    border: 1px solid green;
+}
+
+.btnCompl:hover {
+    color: white;
+    border: 1px solid greenyellow;
+    background-color: green;
+}
+
+.btnDel {
+    color: red;
+    border: 1px solid red;
+}
+
+.btnDel:hover {
+    color: white;
+    border: 1px solid lightcoral;
+    background-color: red;
+}
+
+.btnBox .btnEdit {
+    padding: 5px;
+    border: 1px solid #ff9a00;
+    color: #ff9a00;
+}
+
+.btnBox .btnEdit:hover {
+    color: white;
+    border: 1px solid lightsalmon;
+    background-color: #ff9a00;
+}
+
+.editInputBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.editInput {
+    width: 250px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: none;
+    margin-top: 5px;
+}

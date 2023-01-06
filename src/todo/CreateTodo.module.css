@@ -1,0 +1,44 @@
+.form {
+    margin-top: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-bottom: 20px;
+    padding-top: 50px;
+    background-color: #424242;
+    text-align: left;
+}
+
+.label {
+    position: relative;
+    margin-left: 20px;
+}
+
+.label input {
+    border-radius: 10px;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.span {
+    position: absolute;
+    top: -35px;
+}
+
+.inpDesc {
+    width: 300px;
+}
+
+.btn {
+    border-radius: 25px;
+    padding: 5px 20px;
+    margin-left: 30px;
+    background-color: white;
+    color: #ff9a00;
+    border: 1px solid #ff9a00;
+}
+
+.btn:hover {
+    background-color: #ff9a00;
+    color: white;
+    border: none;
+}
