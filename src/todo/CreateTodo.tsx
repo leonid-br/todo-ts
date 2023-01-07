@@ -19,11 +19,11 @@ export const CreateTodo = () => {
         setDescription(e.currentTarget.value);
     };
 
-    const handleBtnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
+    const handleBtnClick = () => {
         if (name === '' || description === '') {
             return alert('Filds Name and Description required');
         }
+
         dispatch(
             addTodo({
                 id: Date.now(),
@@ -40,23 +40,25 @@ export const CreateTodo = () => {
     return (
         <>
             <div className={s.form}>
-                <label className={s.label}>
-                    <span className={s.span}>Name</span>
-                    <input type="text" onChange={handleName} value={name} />
-                </label>
-                <label className={s.label}>
-                    <span className={s.span}>Description</span>
-                    <input
-                        className={s.inpDesc}
-                        type="text"
-                        onChange={handleDescription}
-                        value={description}
-                    />
-                </label>
+                <form>
+                    <label className={s.label}>
+                        <span className={s.span}>Name</span>
+                        <input type="text" onChange={handleName} value={name} />
+                    </label>
+                    <label className={s.label}>
+                        <span className={s.span}>Description</span>
+                        <input
+                            className={s.inpDesc}
+                            type="text"
+                            onChange={handleDescription}
+                            value={description}
+                        />
+                    </label>
 
-                <button className={s.btn} onClick={handleBtnClick}>
-                    Add todo
-                </button>
+                    <button className={s.btn} onClick={handleBtnClick}>
+                        Add todo
+                    </button>
+                </form>
             </div>
         </>
     );

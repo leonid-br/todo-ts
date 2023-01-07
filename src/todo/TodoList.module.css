@@ -87,3 +87,9 @@
     border: none;
     margin-top: 5px;
 }
+
+.createdDate {
+    font-size: 10px;
+    font-style: italic;
+    color: gray;
+}

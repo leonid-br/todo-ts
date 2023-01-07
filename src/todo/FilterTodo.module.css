@@ -1,0 +1,17 @@
+.filterContainer {
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #424242;
+    text-align: left;
+}
+
+.filterInput {
+    margin-top: 10px;
+    border-radius: 10px;
+    height: 40px;
+    padding-left: 10px;
+}

@@ -10,7 +10,11 @@ import {
 } from '../redux/slices/todoSlice';
 import s from './TodoList.module.css';
 
-export const TodoList = () => {
+interface Props {
+    filter: string;
+}
+
+export const TodoList = ({ filter }: Props) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [isEditing, setIsEditing] = useState(false);
@@ -19,14 +23,32 @@ export const TodoList = () => {
     const dispatch = useDispatch();
     const { todos } = useSelector(todos_state);
 
+    const getDate = (id: number) => {
+        const dateParse = new Date(id);
+
+        const date = dateParse
+            .toLocaleString('ru-RU', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            })
+            .split(' ');
+        date.pop();
+        return date.join(' ');
+    };
+
     const handleComplited = (id: number) => {
         dispatch(complitedTodo({ id }));
     };
 
     const handleDeleted = (id: number) => {
-        dispatch(deleteTodo({ id }));
-        if (id === editingId) {
-            setIsEditing(false);
+        // eslint-disable-next-line no-restricted-globals
+        const confirmDel = confirm('Удалить Todo?');
+        if (confirmDel) {
+            dispatch(deleteTodo({ id }));
+            if (id === editingId) {
+                setIsEditing(false);
+            }
         }
     };
 
@@ -57,13 +79,43 @@ export const TodoList = () => {
         setDescription(e.currentTarget.value);
     };
 
-    return (
-        <div className={s.todoList}>
-            {todos.length === 0 ? (
+    const getVisibleTodos = () => {
+        const normalizeFilter = filter.toLowerCase();
+
+        return (
+            todos &&
+            todos.filter(
+                todo =>
+                    todo.name.toLocaleLowerCase().includes(normalizeFilter) ||
+                    todo.description
+                        .toLocaleLowerCase()
+                        .includes(normalizeFilter)
+            )
+        );
+    };
+    const visibleTodos = getVisibleTodos();
+
+    if (todos.length === 0) {
+        return (
+            <div className={s.todoList}>
                 <div className={s.firstTodo}>Enter your first Todo</div>
-            ) : (
+            </div>
+        );
+    }
+
+    if (visibleTodos.length === 0) {
+        return (
+            <div className={s.todoList}>
+                <div className={s.firstTodo}>
+                    No todos found for your request
+                </div>
+            </div>
+        );
+    } else {
+        return (
+            <div className={s.todoList}>
                 <ul>
-                    {todos.map(todo => (
+                    {visibleTodos.map(todo => (
                         <li key={todo.id} className={s.todo}>
                             <div
                                 className={
@@ -74,6 +126,9 @@ export const TodoList = () => {
                                     <>
                                         <p className={s.name}>{todo.name}</p>
                                         <p>{todo.description}</p>
+                                        <p className={s.createdDate}>
+                                            {getDate(todo.id)}
+                                        </p>
                                     </>
                                 ) : (
                                     <div className={s.editInputBox}>
@@ -142,7 +197,7 @@ export const TodoList = () => {
                         </li>
                     ))}
                 </ul>
-            )}
-        </div>
-    );
+            </div>
+        );
+    }
 };
