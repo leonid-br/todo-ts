@@ -23,10 +23,8 @@ interface ITodoState {
     todos: ITodo[] | [];
 }
 
-const todosLS: ITodo[] =
-    localStorage.getItem('todos') !== null
-        ? JSON.parse(localStorage.getItem('todos') || '{}')
-        : [];
+const todosString = localStorage.getItem('todos');
+const todosLS: ITodo[] = todosString ? JSON.parse(todosString) : [];
 
 export const todoSlice = createSlice({
     name: 'todoSlice',
@@ -44,7 +42,7 @@ export const todoSlice = createSlice({
         complitedTodo: (state, action: PayloadAction<ITodoId>) => {
             state.todos = state.todos.map(todo =>
                 todo.id === action.payload.id
-                    ? { ...todo, completed: true }
+                    ? { ...todo, completed: !todo.completed }
                     : todo
             );
             localStorage.setItem('todos', JSON.stringify(state.todos));

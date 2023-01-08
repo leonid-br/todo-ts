@@ -2,11 +2,10 @@
     margin-top: 20px;
     margin-left: 50px;
     margin-right: 50px;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px;
     background-color: #424242;
     text-align: left;
+    display: flex;
 }
 
 .filterInput {
@@ -14,4 +13,33 @@
     border-radius: 10px;
     height: 40px;
     padding-left: 10px;
+}
+
+.settingsTodoView {
+    display: flex;
+    width: 100%;
+    margin-left: 40px;
+}
+
+.settingsTodoView div {
+    text-align: center;
+}
+
+.settingsTodoView div p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.settingsTodoView div span {
+    font-size: 18px;
+}
+
+.settingsTodoView div button {
+    border-radius: 25px;
+    border: none;
+    padding: 3px 10px;
+}
+
+.settingsTodoView div:not(:last-child) {
+    margin-right: 30px;
 }

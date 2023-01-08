@@ -12,9 +12,10 @@ import s from './TodoList.module.css';
 
 interface Props {
     filter: string;
+    complited: boolean;
 }
 
-export const TodoList = ({ filter }: Props) => {
+export const TodoList = ({ filter, complited }: Props) => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [isEditing, setIsEditing] = useState(false);
@@ -81,10 +82,15 @@ export const TodoList = ({ filter }: Props) => {
 
     const getVisibleTodos = () => {
         const normalizeFilter = filter.toLowerCase();
+        let complitedTodos = todos;
+
+        if (complited) {
+            complitedTodos = todos.filter(todo => todo.completed === true);
+        }
 
         return (
             todos &&
-            todos.filter(
+            complitedTodos.filter(
                 todo =>
                     todo.name.toLocaleLowerCase().includes(normalizeFilter) ||
                     todo.description
@@ -107,7 +113,9 @@ export const TodoList = ({ filter }: Props) => {
         return (
             <div className={s.todoList}>
                 <div className={s.firstTodo}>
-                    No todos found for your request
+                    {complited
+                        ? 'No complited Todos'
+                        : 'No todos found for your request'}
                 </div>
             </div>
         );
@@ -148,16 +156,17 @@ export const TodoList = ({ filter }: Props) => {
                                 )}
                             </div>
                             <div className={s.btnBox}>
-                                {!todo.completed && (
-                                    <button
-                                        className={s.btnCompl}
-                                        type="button"
-                                        onClick={() => handleComplited(todo.id)}
-                                        disabled={isEditing}
-                                    >
-                                        Completed
-                                    </button>
-                                )}
+                                <button
+                                    className={s.btnCompl}
+                                    type="button"
+                                    onClick={() => handleComplited(todo.id)}
+                                    disabled={isEditing}
+                                >
+                                    {todo.completed
+                                        ? 'Cancel completion'
+                                        : 'Complete'}
+                                </button>
+
                                 {!todo.edit ? (
                                     <button
                                         type="button"

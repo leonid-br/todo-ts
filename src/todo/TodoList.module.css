@@ -19,6 +19,16 @@
 .todoCompl p {
     color: #767472;
     text-decoration: line-through;
+    word-break: break-all;
+}
+
+.todoInfo,
+.todoCompl {
+    width: 70%;
+}
+
+.todoInfo p {
+    word-break: break-all;
 }
 
 .todo:not(:last-child) {
