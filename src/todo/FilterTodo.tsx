@@ -45,7 +45,7 @@ export const FilterTodo = ({
                         type="button"
                         onClick={() => setComplitedTodos(!complited)}
                     >
-                        Show
+                        {complited ? 'Hide' : 'Show'}
                     </button>
                 </div>
             </div>

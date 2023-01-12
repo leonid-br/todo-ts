@@ -35,7 +35,7 @@ export const todoSlice = createSlice({
 
     reducers: {
         addTodo: (state, action: PayloadAction<ITodo>) => {
-            // state.todos.push(action.payload)
+            // state.todos.push(action.payload);
             state.todos = [action.payload, ...state.todos];
             localStorage.setItem('todos', JSON.stringify(state.todos));
         },

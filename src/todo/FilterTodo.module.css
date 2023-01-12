@@ -1,43 +1,110 @@
+@media screen and (max-width: 767px) {
+    .filterContainer {
+        padding: 20px 10px;
+    }
+
+    .settingsTodoView {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .settingsTodoView div {
+        display: flex;
+        text-align: left;
+    }
+
+    .filterContainer {
+        display: block;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .settingsTodoView div p {
+        margin-bottom: 5px;
+        margin-right: 10px;
+
+        font-size: 16px;
+    }
+
+    .settingsTodoView div span {
+        font-size: 16px;
+        color: #ff9a00;
+    }
+
+    .settingsTodoView div button {
+        padding: 0px 5px;
+
+        font-size: 14px;
+        color: black;
+    }
+
+    .filterInput {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .settingsTodoView {
+        display: flex;
+        width: 100%;
+        margin-left: 40px;
+    }
+
+    .settingsTodoView div {
+        display: block;
+        text-align: center;
+    }
+
+    .filterContainer {
+        display: flex;
+        margin-left: 50px;
+        margin-right: 50px;
+        padding: 20px 15px;
+    }
+
+    .settingsTodoView div p {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .settingsTodoView div span {
+        font-size: 18px;
+    }
+
+    settingsTodoView div button {
+        padding: 3px 10px;
+
+        font-size: 16px;
+        color: black;
+    }
+
+    .filterInput {
+        min-width: 200px;
+    }
+}
+
 .filterContainer {
     margin-top: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 20px;
+    border-radius: 15px;
+
     background-color: #424242;
     text-align: left;
-    display: flex;
 }
 
 .filterInput {
     margin-top: 10px;
+    padding-left: 10px;
+    width: 100%;
+
     border-radius: 10px;
     height: 40px;
-    padding-left: 10px;
-}
-
-.settingsTodoView {
-    display: flex;
-    width: 100%;
-    margin-left: 40px;
-}
-
-.settingsTodoView div {
-    text-align: center;
-}
-
-.settingsTodoView div p {
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.settingsTodoView div span {
-    font-size: 18px;
 }
 
 .settingsTodoView div button {
     border-radius: 25px;
     border: none;
-    padding: 3px 10px;
 }
 
 .settingsTodoView div:not(:last-child) {

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { addTodo } from '../redux/slices/todoSlice';
+import { useAutosizeTextArea } from '../hooks/useAutosizeTextArea';
 
 import s from './CreateTodo.module.css';
 
@@ -9,13 +10,17 @@ export const CreateTodo = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
 
+    const textAreaRef = useRef(
+        null
+    ) as React.RefObject<HTMLTextAreaElement> | null;
+
     const dispatch = useDispatch();
 
     const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName(e.currentTarget.value);
     };
 
-    const handleDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         setDescription(e.currentTarget.value);
     };
 
@@ -37,26 +42,31 @@ export const CreateTodo = () => {
         setName('');
     };
 
+    useAutosizeTextArea({ textAreaRef, description });
     return (
         <>
             <div className={s.form}>
                 <form>
-                    <label className={s.label}>
-                        <span className={s.span}>Name</span>
-                        <input type="text" onChange={handleName} value={name} />
-                    </label>
-                    <label className={s.label}>
-                        <span className={s.span}>Description</span>
-                        <input
-                            className={s.inpDesc}
-                            type="text"
-                            onChange={handleDescription}
-                            value={description}
-                        />
-                    </label>
-
+                    <div className={s.formBox}>
+                        <label className={s.label}>
+                            <span className={s.span}>Name</span>
+                            <input
+                                type="text"
+                                onChange={handleName}
+                                value={name}
+                            />
+                        </label>
+                        <label className={`${s.label} ${s.description}`}>
+                            <span className={s.span}>Description</span>
+                            <textarea
+                                onChange={handleDescription}
+                                value={description}
+                                ref={textAreaRef}
+                            />
+                        </label>
+                    </div>
                     <button className={s.btn} onClick={handleBtnClick}>
-                        Add todo
+                        Create
                     </button>
                 </form>
             </div>
