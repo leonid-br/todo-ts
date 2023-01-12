@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Your todos manager",
+    "short_name": "Your todos",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
