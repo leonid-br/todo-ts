@@ -65,7 +65,11 @@ export const CreateTodo = () => {
                             />
                         </label>
                     </div>
-                    <button className={s.btn} onClick={handleBtnClick}>
+                    <button
+                        type="button"
+                        className={s.btn}
+                        onClick={handleBtnClick}
+                    >
                         Create
                     </button>
                 </form>
